@@ -1,1 +1,338 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandeep Kumar Kuppili | UI Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #00d2ff;
+            --secondary-color: #3a7bd5;
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent-gradient: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Background Animation --- */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(58, 123, 213, 0.1) 0%, transparent 80%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        /* --- Header Section --- */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            margin-bottom: 20px;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Tabs System --- */
+        .tabs-container {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .tab-menu {
+            display: flex;
+            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            color: var(--text-dim);
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            outline: none;
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+            background: rgba(58, 123, 213, 0.1);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 30px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Content Styling --- */
+        .summary-text {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .exp-item {
+            border-left: 2px solid var(--primary-color);
+            padding-left: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .exp-item::before {
+            content: "";
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-tag {
+            background: rgba(255,255,255,0.05);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-5px);
+            background: var(--accent-gradient);
+            color: white;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        ul li::before {
+            content: "▹";
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .tab-menu {
+                flex-direction: column;
+            }
+            .container {
+                margin: 10px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://via.placeholder.com/150" alt="Sandeep Kumar Kuppili" class="profile-img">
+        <h1>SANDEEP KUMAR KUPPILI</h1>
+        <p class="subtitle">UI Developer | Software Engineer</p>
+        
+        <div class="contact-links">
+            <a href="mailto:sandeepkumarkuppili@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://www.linkedin.com/in/sandeep-kumar-kuppili" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/Sandeepkumarkuppili" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <a href="#"><i class="fas fa-phone"></i> +91 95736 94488</a>
+        </div>
+    </header>
+
+    <div class="tabs-container">
+        <nav class="tab-menu">
+            <button class="tab-btn active" onclick="openTab(event, 'about')">About</button>
+            <button class="tab-btn" onclick="openTab(event, 'experience')">Experience</button>
+            <button class="tab-btn" onclick="openTab(event, 'skills')">Skills</button>
+            <button class="tab-btn" onclick="openTab(event, 'education')">Education</button>
+        </nav>
+
+        <div id="about" class="tab-content active">
+            <p class="summary-text">
+                Dynamic and results-oriented software engineer with a Bachelor's degree in Computer Science and Engineering, 
+                coupled with 5 years of hands-on experience in the development of web-based applications. 
+                Proficient in modern frontend ecosystems with a keen understanding of responsive designs and tech migrations.
+            </p>
+        </div>
+
+        <div id="experience" class="tab-content">
+            <div class="exp-item">
+                <h3>TATA CONSULTANCY SERVICES</h3>
+                <p style="color: var(--primary-color);">Feb 2021 - Present | Bengaluru, India</p>
+                <ul style="margin-top: 15px;">
+                    <li>Advanced proficiency in HTML5, Bootstrap, and CSS3 for crafting responsive interfaces.</li>
+                    <li>Expertise in Angular 14+ and tech migrations (AngularJS to modern versions).</li>
+                    <li>Designed and implemented RESTful web services using AJAX and JSON.</li>
+                    <li>Extensive experience collaborating directly with US-based teams for requirement gathering.</li>
+                    <li>Strong proficiency in Git/GitLab and Agile methodologies.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="skills" class="tab-content">
+            <h4 style="margin-bottom: 15px;">Frontend & Frameworks</h4>
+            <div class="skill-grid">
+                <div class="skill-tag">Angular 14+</div>
+                <div class="skill-tag">TypeScript</div>
+                <div class="skill-tag">JavaScript (ES6+)</div>
+                <div class="skill-tag">Ngrx / Rxjs</div>
+                <div class="skill-tag">HTML5 / SCSS</div>
+                <div class="skill-tag">Bootstrap</div>
+            </div>
+            
+            <h4 style="margin: 25px 0 15px 0;">Backend & Database</h4>
+            <div class="skill-grid">
+                <div class="skill-tag">Python</div>
+                <div class="skill-tag">FastAPI / Flask</div>
+                <div class="skill-tag">Postgres / SQL</div>
+                <div class="skill-tag">Quadrant DB</div>
+            </div>
+
+            <h4 style="margin: 25px 0 15px 0;">Professional</h4>
+            <div class="skill-grid">
+                <div class="skill-tag">Critical Thinking</div>
+                <div class="skill-tag">Teamwork</div>
+                <div class="skill-tag">Agile Model</div>
+                <div class="skill-tag">Cross-Browser Optimization</div>
+            </div>
+        </div>
+
+        <div id="education" class="tab-content">
+            <div class="exp-item">
+                <h3>Bachelor of Technology</h3>
+                <p>Computer Science and Engineering</p>
+                <p style="color: var(--text-dim);">Avanthi Institute of Engineering and Technology (JNTUK)</p>
+                <p style="font-size: 0.9rem;">2016 - 2020 | Visakhapatnam, AP</p>
+            </div>
+            <div style="margin-top: 20px;">
+                <h4>Languages</h4>
+                <p>English, Telugu, Hindi</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            tabcontent[i].classList.remove("active");
+        }
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</body>
+</html>
